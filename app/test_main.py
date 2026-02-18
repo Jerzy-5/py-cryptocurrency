@@ -18,3 +18,15 @@ def test_recommends_buy_when_prediction_is_the_same() -> None:
     with patch("app.main.get_exchange_rate_prediction") as mock_prediction:
         mock_prediction.return_value = 1
         assert cryptocurrency_action(1) == "Do nothing"
+
+
+def test_recommends_do_nothing_when_is_equal_5_percent() -> None:
+    with patch("app.main.get_exchange_rate_prediction") as mock_prediction:
+        mock_prediction.return_value = 1
+        assert cryptocurrency_action(1.05) == "Do nothing"
+
+
+def test_recommends_do_nothing_when_is_equal_5_percent1() -> None:
+    with patch("app.main.get_exchange_rate_prediction") as mock_prediction:
+        mock_prediction.return_value = 1
+        assert cryptocurrency_action(0.95) == "Do nothing"
